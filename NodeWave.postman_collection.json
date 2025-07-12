@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "b34825c7-40da-488e-aa4b-199028492d81",
+		"name": "NodeWave",
+		"description": "File Upload, Filter, Search, Pagination, Range, Sorting for NodeWave Backend Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36138103",
+		"_collection_link": "https://winter-equinox-308034.postman.co/workspace/New-Team-Workspace~010c2353-55f0-4163-adfb-4e47014b0bdb/collection/36138103-b34825c7-40da-488e-aa4b-199028492d81?action=share&source=collection_link&creator=36138103"
+	},
+	"item": [
+		{
+			"name": "Upload File Excel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"value": "",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3150/files/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"value": "",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3150/files/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Files (Default Pagination)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter by Status (SUCCESS)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files?filters={\"status\":\"SUCCESS\"}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "filters",
+							"value": "{\"status\":\"SUCCESS\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter by Status Multi (SUCCESS & FAIL)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files?filters={\"status\":[\"SUCCESS\",\"FAIL\"]}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "filters",
+							"value": "{\"status\":[\"SUCCESS\",\"FAIL\"]}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Filename",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files?searchFilters={\"filename\":\"produk\"}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "searchFilters",
+							"value": "{\"filename\":\"produk\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter + Search (SUCCESS & produk)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files?filters={\"status\":\"SUCCESS\"}&searchFilters={\"filename\":\"produk\"}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "filters",
+							"value": "{\"status\":\"SUCCESS\"}"
+						},
+						{
+							"key": "searchFilters",
+							"value": "{\"filename\":\"produk\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Range Filter (createdAt)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files?rangedFilters=[{\"key\":\"createdAt\",\"start\":\"2024-01-01T00:00:00.000Z\",\"end\":\"2025-12-31T23:59:59.999Z\"}]",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "rangedFilters",
+							"value": "[{\"key\":\"createdAt\",\"start\":\"2024-01-01T00:00:00.000Z\",\"end\":\"2025-12-31T23:59:59.999Z\"}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination (Page 2, 5 per page)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files?page=2&rows=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "rows",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sorting (createdAt ASC)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjE2MzI2MywiZXhwIjoxNzUyMjQ5NjYzfQ.dPOoQRHQvAug9yq7IlCM05CJmQkQroj6jMKdZfFgJlA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3150/files?orderKey=createdAt&orderRule=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3150",
+					"path": [
+						"files"
+					],
+					"query": [
+						{
+							"key": "orderKey",
+							"value": "createdAt"
+						},
+						{
+							"key": "orderRule",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
