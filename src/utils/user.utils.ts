@@ -1,10 +1,20 @@
 import { Roles } from '@prisma/client';
 
-export function transformRoleToEnumRole(role:string){
-    switch(role){
-        case "ADMIN":
-            return Roles.ADMIN
-        default:
-            return Roles.USER
-    }
+/**
+ * Transform plain string role to Prisma enum Roles
+ * @param role string input ("ADMIN", "USER", etc)
+ * @returns Roles enum
+ */
+export function transformRoleToEnumRole(role: string): Roles {
+  if (role && role.toUpperCase() === "ADMIN") {
+    return Roles.ADMIN;
+  }
+  return Roles.USER;
+}
+
+/**
+ * Get user object from Express JWT middleware
+ */
+export function getUserFromJWT(req: any) {
+  return req.user;
 }

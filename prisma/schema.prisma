@@ -10,4 +10,50 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Declare schemas here
+enum Roles {
+  ADMIN
+  USER
+}
+
+enum FileStatus {
+  PENDING
+  SUCCESS
+  FAIL
+  DELETED
+}
+
+model User {
+  id          Int         @id @default(autoincrement())
+  email       String      @unique
+  fullName    String
+  password    String
+  files       FileUpload[]
+  createdAt   DateTime    @default(now())
+  role        Roles       @default(USER)
+}
+
+model FileUpload {
+  id          Int         @id @default(autoincrement())
+  filename    String
+  status      FileStatus
+  uploadedBy  Int
+  user        User        @relation(fields: [uploadedBy], references: [id])
+  createdAt   DateTime    @default(now())
+  processedAt DateTime?
+  error       String?
+  data        Json?
+  products    Product[]
+}
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  price       Float
+  stock       Int
+  origin      String
+  category    String
+  is_active   Boolean
+  createdAt   DateTime    @default(now())
+  fileId      Int
+  file        FileUpload @relation(fields: [fileId], references: [id])
+}

@@ -1,29 +1,29 @@
 import { response_not_found, response_success } from "$utils/response.utils";
 import { Request, Response, Router } from "express";
-import RoutesRegistry from "./registry";
+import routes from "./registry";
 
+const mainRouter = Router();
 
-const router = Router();
-
-router.get("/", (req: Request, res: Response) => {
+mainRouter.get("/", (req: Request, res: Response) => {
   return response_success(res, "main routes!");
-})
-
-router.get('/robots.txt', function (req:Request, res:Response) {
-  res.type('text/plain')
-  res.send(
-    `User-agent: *\nAllow: /`);
 });
-router.get("/ping", (req: Request, res: Response) => {
+
+mainRouter.get("/ping", (req: Request, res: Response) => {
   return response_success(res, "pong!");
 });
 
+mainRouter.get("/robots.txt", (req: Request, res: Response) => {
+  res.type("text/plain").send("User-agent: *\nAllow: /");
+});
 
-router.use("/example", RoutesRegistry.ExampleRoutes)
+routes.forEach(({ path, handler }) => {
+  if (path && handler) {
+    mainRouter.use(path, handler);
+  }
+});
 
-
-router.all("*", (req: Request, res: Response) => {
+mainRouter.all("*", (req: Request, res: Response) => {
   return response_not_found(res);
 });
 
-export default router;
+export default mainRouter;
